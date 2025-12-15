@@ -1,0 +1,107 @@
+/* ============================================
+   CHOOSE-CHARACTER.CSS
+   ============================================ */
+
+.page-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    color: #FFFFFF;
+    text-shadow: 
+        -2px -2px 0 #003A70,
+         2px -2px 0 #003A70,
+        -2px  2px 0 #003A70,
+         2px  2px 0 #003A70;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.character-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.char-card {
+    width: 308px;
+    height: 605px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    transition: transform 0.3s;
+}
+
+.char-card:hover {
+    transform: translateY(-10px);
+}
+
+.char-name {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #000000;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.char-img {
+    width: 269px;
+    height: 400px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 10px;
+    margin-bottom: auto;
+}
+
+.btn-select {
+    width: 144px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.card-blue {
+    border: 4px solid #2196F3;
+}
+
+.card-blue .btn-select {
+    background-color: #2196F3;
+}
+
+.card-red {
+    border: 4px solid #F44336;
+}
+
+.card-red .btn-select {
+    background-color: #F44336;
+}
+
+.card-yellow {
+    border: 4px solid #FFC107;
+}
+
+.card-yellow .btn-select {
+    background-color: #FFC107;
+}
+
+
+

@@ -1,0 +1,207 @@
+/* ============================================
+   BATTLE.CSS - Battle Arena Page
+   ============================================ */
+
+body {
+    background-image: url('../../assets/background-battle.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.battle-container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+/* --- OVERLAY & SPOTLIGHT --- */
+.battle-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0); z-index: 30; pointer-events: none;
+    transition: background 0.5s ease;
+}
+.battle-overlay.active { background: rgba(0, 0, 0, 0.75); }
+
+.spotlight-player, .spotlight-bot {
+    position: absolute; bottom: 40px; width: 500px; height: 500px;
+    border-radius: 50%; z-index: 25; opacity: 0; transform: scale(0.8);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none; filter: blur(20px);
+}
+.spotlight-player { left: 60px; background: radial-gradient(circle, rgba(0, 210, 255, 0.4) 0%, rgba(0, 210, 255, 0.2) 30%, transparent 70%); }
+.spotlight-bot { right: 120px; background: radial-gradient(circle, rgba(255, 71, 87, 0.4) 0%, rgba(255, 71, 87, 0.2) 30%, transparent 70%); }
+.spotlight-player.active, .spotlight-bot.active { opacity: 1; transform: scale(1); }
+
+/* --- HEADER --- */
+.dashboard-header {
+    width: 100%; height: 80px; display: flex; justify-content: space-between;
+    align-items: center; padding: 0 40px; position: absolute; top: 0; left: 0; z-index: 100;
+}
+.nav-left img { height: 50px; width: auto; }
+
+/* --- SCOREBOARD LAYOUT BARU (RAPI & JARAK AMAN) --- */
+.scoreboard {
+    position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+    width: 60%; max-width: 800px; height: 100px; /* Tinggi dinaikkan dikit */
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #00d2ff; border-radius: 15px;
+    
+    /* Flexbox untuk 3 Kolom */
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 20px;
+    z-index: 50;
+    box-shadow: 0 0 15px #00d2ff, inset 0 0 20px rgba(0, 210, 255, 0.2);
+}
+
+/* Kolom Kiri & Kanan (Skor) */
+.score-col {
+    flex: 1; text-align: center; z-index: 60;
+}
+
+/* Kolom Tengah (VS & TO WIN) */
+.center-col {
+    flex: 0 0 200px; /* Lebar tetap biar gak goyang */
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative; z-index: 50;
+}
+
+.score-text { font-weight: 700; font-size: 18px; text-transform: uppercase; }
+.player-text { color: #00d2ff; text-shadow: 0 0 5px rgba(255,255,255,0.8); }
+.enemy-text { color: #ff4757; text-shadow: 0 0 5px rgba(255,255,255,0.8); }
+
+/* Skor Angka Besar */
+.score-badge {
+    font-size: 40px; font-weight: bold; color: #fff;
+    text-shadow: 0 0 10px #000;
+    background: rgba(0,0,0,0.5);
+    padding: 2px 20px; border-radius: 10px; margin-top: 5px;
+    display: inline-block;
+}
+
+/* Teks TO WIN: 3 (Jarak Aman) */
+.to-win-text {
+    font-size: 16px; color: #fff; font-weight:bold; letter-spacing: 2px;
+    margin-bottom: 10px; /* Jarak ke bawah PENTING biar gak ketabrak */
+    text-shadow: 0 2px 5px rgba(0,0,0,1);
+}
+
+/* Teks VS */
+.vs-text-static {
+    font-weight: 900; font-size: 50px; font-style: italic;
+    background: linear-gradient(to bottom, #FFD700, #FF8C00);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5));
+    line-height: 0.8;
+}
+
+/* --- UKURAN KARAKTER & POKEMON (ANTI RAKSASA) --- */
+.player-area { position: absolute; bottom: 40px; left: 60px; z-index: 20; display: flex; align-items: flex-end; }
+.bot-area { position: absolute; bottom: 110px; right: 200px; z-index: 15; transform: scale(0.85); display: flex; align-items: flex-end; }
+
+/* Trainer */
+.player-char, .bot-char {
+    height: 400px;
+    max-height: 50vh; /* Maksimal setengah layar */
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+}
+
+/* Pokemon */
+.battle-poke-img {
+    width: 200px; /* Ukuran default */
+    height: 200px;
+    max-width: 20vw; /* Maksimal 20% layar */
+    max-height: 20vh;
+    object-fit: contain; /* Biar gak gepeng */
+    position: absolute;
+    bottom: 90px; /* Naik biar gak napak bezel */
+    z-index: 21;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+}
+
+.my-poke-pos { left: 80px; }
+.enemy-poke-pos { right: 80px; transform: scaleX(-1); }
+
+
+/* --- SKILL DISPLAY --- */
+.skill-display-container {
+    position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; align-items: center; gap: 100px; z-index: 40;
+    opacity: 0; pointer-events: none; transition: opacity 0.5s ease;
+}
+.skill-display-container.show { opacity: 1; }
+
+.skill-display {
+    width: 120px; height: 120px; border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    font-size: 50px; color: white; border: 5px solid white;
+    box-shadow: 0 0 30px currentColor; position: relative;
+}
+.skill-display-player { background: linear-gradient(135deg, #00d2ff, #0099cc); box-shadow: 0 0 30px rgba(0, 210, 255, 0.8); }
+.skill-display-bot { background: linear-gradient(135deg, #ff4757, #cc0000); box-shadow: 0 0 30px rgba(255, 71, 87, 0.8); }
+
+/* --- CONTROLS --- */
+.battle-controls {
+    position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 25px; z-index: 100;
+}
+.btn-action {
+    width: 70px; height: 70px; border-radius: 50%; border: 4px solid #FFFFFF;
+    cursor: pointer; display: flex; justify-content: center; align-items: center;
+    font-size: 28px; color: white; transition: transform 0.2s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+.btn-action:hover { transform: scale(1.1); }
+.btn-attack { background: linear-gradient(135deg, #ff416c, #ff4b2b); }
+.btn-skill { background: linear-gradient(135deg, #f7971e, #ffd200); }
+.btn-defend { background: linear-gradient(135deg, #2c3e50, #4ca1af); }
+
+.logout-icon { font-size: 30px; color: white; text-decoration: none; transition: transform 0.2s; }
+.logout-icon:hover { transform: scale(1.1); }
+
+/* --- MODAL --- */
+.battle-modal {
+    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8);
+    width: 90%; max-width: 600px; z-index: 300; opacity: 0; pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.battle-modal.show { opacity: 1; transform: translate(-50%, -50%) scale(1); pointer-events: all; }
+.modal-content {
+    border-radius: 20px; padding: 40px 30px; text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); position: relative; overflow: hidden;
+}
+.modal-win { background: linear-gradient(to bottom, #FFD700, #FF8C00); }
+.modal-lose { background: linear-gradient(to bottom, #4a4a4a, #2a2a2a); }
+
+.modal-title { font-size: 48px; font-weight: 900; color: white; text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); margin-bottom: 30px; text-transform: uppercase; }
+.modal-reward { font-size: 20px; color: white; text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); margin: 25px 0; font-weight: 600; }
+.modal-actions { display: flex; gap: 20px; justify-content: center; margin-top: 30px; }
+.modal-btn {
+    padding: 15px 30px; border-radius: 25px; border: 3px solid white;
+    background: rgba(255, 255, 255, 0.2); color: white; font-size: 18px;
+    font-weight: 700; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase;
+}
+.modal-btn:hover { background: rgba(255, 255, 255, 0.3); transform: scale(1.05); }
+
+.battle-result {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 48px; font-weight: 900; z-index: 200; text-shadow: 0 0 20px currentColor;
+    opacity: 0; pointer-events: none;
+}
+.battle-result.show { animation: resultShow 1.5s ease-out; }
+@keyframes resultShow {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+    30% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+    70% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+}
+.result-win { color: #00ff00; }
+.result-lose { color: #ff0000; }

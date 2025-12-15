@@ -1,0 +1,114 @@
+/* ============================================
+   DASHBOARD.CSS
+   ============================================ */
+
+.dashboard-container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.dashboard-char-img {
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    height: 85vh;
+    width: auto;
+    z-index: 10;
+    filter: drop-shadow(10px 10px 20px rgba(0,0,0,0.4));
+}
+
+.user-widget {
+    width: 220px;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    backdrop-filter: blur(20px);
+    position: absolute;
+    bottom: 30%;
+    left: 28%;
+    z-index: 20;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.widget-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.progress-bg {
+    width: 180px;
+    height: 6px;
+    background: rgba(51, 51, 51, 0.2);
+    border-radius: 3px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #FF0004;
+    width: 50%;
+}
+
+.widget-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 5px;
+}
+
+.widget-partner {
+    font-size: 11px;
+    color: #EEE;
+    font-weight: 500;
+}
+
+.btn-battle-container {
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%);
+    z-index: 20;
+}
+
+.btn-battle {
+    width: 280px;
+    height: 70px;
+    border-radius: 35px;
+    border: 3px solid #FFFFFF;
+    background: linear-gradient(to right, #FFD700, #FF8C00);
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s, filter 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-battle:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.btn-battle span {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    color: #FFFFFF;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+
+

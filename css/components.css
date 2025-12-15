@@ -1,0 +1,194 @@
+/* ============================================
+   COMPONENTS.CSS - Reusable Components
+   ============================================ */
+
+.input-group {
+    width: 300px;
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+.input-group label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.vector-icon {
+    width: 16px;
+    margin-right: 8px;
+    color: #000;
+}
+
+.input-group input {
+    width: 100%;
+    height: 40px;
+    padding: 0 15px;
+    border-radius: 10px;
+    border: none;
+    background-color: #FFFFFF;
+    font-size: 14px;
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.btn-pokeball {
+    position: relative;
+    width: 193px;
+    height: 60px;
+    border-radius: 20px;
+    border: 3px solid #000000;
+    background: linear-gradient(to bottom, #FFFFFF 50%, #FF0000 50%);
+    margin-top: 15px;
+    margin-left: 40px;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+.btn-pokeball:hover {
+    transform: scale(1.05);
+}
+
+.btn-pokeball span {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: #000000;
+    position: relative;
+    z-index: 10;
+    text-shadow: 0px 0px 4px rgba(255,255,255,0.8);
+}
+
+.btn-pokeball::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: #000000;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.btn-pokeball::after {
+    content: '';
+    position: absolute;
+    width: 37px;
+    height: 32px;
+    background-color: #FFFFFF;
+    border: 3px solid #000000;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.register-card,
+.login-card {
+    width: 400px;
+    background-color: rgba(245, 245, 245, 0.9);
+    border: 2px solid #FFFFFF;
+    border-radius: 20px;
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.register-card {
+    height: 600px;
+}
+
+.login-card {
+    height: 480px;
+}
+
+.register-card h2,
+.login-card h2 {
+    font-weight: 700;
+    font-size: 28px;
+    color: #333333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login-card h2 {
+    margin-bottom: 30px;
+}
+
+.footer-link {
+    margin-top: 15px;
+}
+
+.footer-link p {
+    font-size: 13px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.footer-link a {
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.dashboard-header {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.nav-left img {
+    width: 102px;
+    height: 56px;
+}
+
+.nav-center {
+    font-size: 24px;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-shadow: 0px 2px 4px rgba(0,0,0,0.5);
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-shadow: 0px 2px 4px rgba(0,0,0,0.5);
+}
+
+.logout-icon {
+    font-size: 24px;
+    color: #FFF;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.logout-icon:hover {
+    color: #ff4757;
+}
+
+
+
